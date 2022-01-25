@@ -25,7 +25,7 @@ void fw(int N)
                    A[i][j]=A[i][k]+A[k][j];
             }
     stop_s=clock();
-    printf("\nExecution time: %f\n",(double)(stop_s - start_s));
+    printf("Execution time: %f\n",(double)(stop_s - start_s));
 }
 
 void fwi(int N)
@@ -45,7 +45,7 @@ void fwi(int N)
                         Ai[i][j]=Ai[i][k]+Ai[k][j];
                   }
     stop_s=clock();
-    printf("\nExecution time: %f\n",(double)(stop_s - start_s));
+    printf("Execution time: %f\n",(double)(stop_s - start_s));
 }
 
 void new_fw(int N)
@@ -100,7 +100,7 @@ void new_fw(int N)
            }
     }
     stop_s=clock();
-    printf("\nExecution time: %f\n",(double)(stop_s - start_s));
+    printf("Execution time: %f\n",(double)(stop_s - start_s));
 }
 
 
@@ -135,8 +135,8 @@ int main()
        int c=0;
        for (i=0;i<N;i++)
            for (j=0;j<N;j++)
-               if ((i!=j)&&(rand()%4*N>=(4*N-TESTS[x]))) A[i][j]=Ai[i][j]=An[i][j]=1,c++;
-       printf("%d\n",c);
+               if ((i!=j)&&(rand()%(4*N)>=(4*N-TESTS[x]))) A[i][j]=Ai[i][j]=An[i][j]=1,c++;
+       printf("\n Number of Edges: %d\n",c);
 
        fwi(N);
 
