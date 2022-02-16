@@ -447,8 +447,10 @@ int main()
     int lgN=log(N)/log(2);
     printf("Clocks per sec %d\n",CLOCKS_PER_SEC);
     int TESTS[]={1,2,4,8,16,4*lgN,8*lgN,4*N/lgN,2*N};
-    for (int x=0;x<9;x++) for (int y=0;y<10;y++)  
+    // 9 different densities; 10 random input; repeat each input 5 times
+    for (int x=0;x<9;x++) for (int y=0;y<10;y++) for (int z=0;z<5;z++)
     {
+       srand(x+y+1);
        count_fw= count_fwi= count_dijkstra=count_johnson=count_nfw=0; // correct counts
        for (i=0;i<N;i++)
           for (j=0;j<N;j++)
@@ -502,6 +504,7 @@ int main()
       stop_s=clock();
       printf("Johnson's Execution time: %f\n",(double)(stop_s - start_s));
 
+      // verify that all outputs are the same 
       for (i=1;i<=N;i++)
         for (j=1;j<=N;j++)
           if ((Ai[i-1][j-1] != APSPJ[i][j]) || (Ai[i-1][j-1] != APSPD[i][j]) || (Ai[i-1][j-1] != An[i-1][j-1]))
